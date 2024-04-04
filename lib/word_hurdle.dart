@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lexiquest/hurdle_provider.dart';
+import 'package:provider/provider.dart';
 
 class wordhurdlepage extends StatefulWidget {
   const wordhurdlepage({super.key});
@@ -9,6 +11,11 @@ class wordhurdlepage extends StatefulWidget {
 
 class _wordhurdlepageState extends State<wordhurdlepage> {
   @override
+  void didChangeDependencies() {
+    Provider.of<HurdleProvider>(context,listen:false).init();
+    super.didChangeDependencies();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(
@@ -17,3 +24,4 @@ class _wordhurdlepageState extends State<wordhurdlepage> {
     );
   }
 }
+//79

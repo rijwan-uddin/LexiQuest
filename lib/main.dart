@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:lexiquest/hurdle_provider.dart';
 import 'package:lexiquest/word_hurdle.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(create: ( context) => HurdleProvider() ,
+  child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
