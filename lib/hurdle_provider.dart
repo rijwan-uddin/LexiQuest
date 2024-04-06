@@ -14,7 +14,8 @@ class HurdleProvider extends ChangeNotifier{
 
  init (){
   totalWords = words.all.where((element) => element.length == 5 ).toList();
-  
+  generateBoard();
+  generateRandomWord();
 
  }
  generateBoard(){
