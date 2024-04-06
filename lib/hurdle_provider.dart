@@ -8,13 +8,13 @@ class HurdleProvider extends ChangeNotifier{
  final random = Random.secure();
  List<String> totalWords= [];
  List<String> rowInputs=[];
- List<String> excludeLetters = [];
+ List<String> excludedLetters = [];
  List<Wordle> hurdleBoard = [];
  String targetWord='';
 
  init (){
   totalWords = words.all.where((element) => element.length == 5 ).toList();
-
+  
 
  }
  generateBoard(){
@@ -23,7 +23,7 @@ class HurdleProvider extends ChangeNotifier{
  }
 
  generateRandomWord(){
-  totalWords[random.nextInt(totalWords.length)].toUpperCase();
+  targetWord=totalWords[random.nextInt(totalWords.length)].toUpperCase();
   print(targetWord);
  }
 }
