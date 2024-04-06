@@ -71,41 +71,7 @@ class _wordhurdlepageState extends State<wordhurdlepage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (!provider.isAValidWord) {
-                          showMsg(context, 'Not a valid word');
-                          return;
-                        }
-                        if (provider.shouldCheckForAnswer) {
-                          provider.checkAnswer();
-                        }
-                        if (provider.wins) {
-                          showResult(
-                            context: context,
-                            title: 'You win',
-                            body: 'The word was ${provider.targetWord}',
-                            onPlayAgain: () {
-                              Navigator.pop(context);
-                              provider.reset();
-                            },
-                            onCancel: () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        } else if (provider.noAttemptsLeft) {
-                          showResult(
-                            context: context,
-                            title: 'You Lost',
-                            body: 'The word was ${provider.targetWord} ',
-                            onPlayAgain: () {
-                              Navigator.pop(context);
-                              provider.reset();
-                            },
-                            onCancel: () {
-
-                              Navigator.pop(context);
-                            },
-                          );
-                        }
+                        _handleInput(provider);
                       },
                       child: const Text('Submit'),
                     )
@@ -118,9 +84,41 @@ class _wordhurdlepageState extends State<wordhurdlepage> {
       ),
     );
   }
+  _handleInput(HurdleProvider provider){
+    if (!provider.isAValidWord) {
+      showMsg(context, 'Not a valid word');
+      return;
+    }
+    if (provider.shouldCheckForAnswer) {
+      provider.checkAnswer();
+    }
+    if (provider.wins) {
+      showResult(
+        context: context,
+        title: 'You win',
+        body: 'The word was ${provider.targetWord}',
+        onPlayAgain: () {
+          Navigator.pop(context);
+          provider.reset();
+        },
+        onCancel: () {
+          Navigator.pop(context);
+        },
+      );
+    } else if (provider.noAttemptsLeft) {
+      showResult(
+        context: context,
+        title: 'You Lost',
+        body: 'The word was ${provider.targetWord} ',
+        onPlayAgain: () {
+          Navigator.pop(context);
+          provider.reset();
+        },
+        onCancel: () {
+
+          Navigator.pop(context);
+        },
+      );
+    }
+  }
 }
-//79
-//80udemy
-//83  10.16
-//85 completed
-//86
